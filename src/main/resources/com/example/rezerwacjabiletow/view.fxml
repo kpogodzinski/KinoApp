@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+  <tabs>
+    <Tab text="Filmy">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView layoutX="58.0" layoutY="60.0" prefHeight="252.0">
+                    <columns>
+                      <TableColumn prefWidth="31.39999008178711" text="ID" />
+                      <TableColumn prefWidth="158.99996948242188" text="Tytuł" />
+                        <TableColumn prefWidth="70.60005187988281" text="Gatunek" />
+                        <TableColumn prefWidth="82.79998779296875" text="Czas trwania" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="449.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Dodaj film" />
+                  <Button layoutX="449.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Edytuj film" />
+                  <Button layoutX="449.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Usuń film" />
+                  <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie filmami" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+
+    <Tab text="Seanse">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <children>
+            <TableView layoutX="58.0" layoutY="60.0" prefHeight="252.0">
+              <columns>
+                <TableColumn prefWidth="31.39999008178711" text="ID" />
+                <TableColumn prefWidth="158.99996948242188" text="Film" />
+                <TableColumn prefWidth="96.20001220703125" text="Data i godzina" />
+                <TableColumn prefWidth="58.20001220703125" text="Sala" />
+              </columns>
+            </TableView>
+            <Button layoutX="449.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Dodaj seans" />
+            <Button layoutX="449.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Edytuj seans" />
+            <Button layoutX="449.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Usuń seans" />
+            <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie seansami" />
+          </children></AnchorPane>
+      </content>
+    </Tab>
+
+    <Tab text="Rezerwacje">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <children>
+            <TableView layoutX="58.0" layoutY="60.0" prefHeight="252.0">
+              <columns>
+                <TableColumn prefWidth="31.39999008178711" text="ID" />
+                <TableColumn prefWidth="158.99996948242188" text="Tytuł" />
+                <TableColumn prefWidth="70.60005187988281" text="Gatunek" />
+                <TableColumn prefWidth="82.79998779296875" text="Czas trwania" />
+              </columns>
+            </TableView>
+            <Button layoutX="436.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Dodaj rezerwację" />
+            <Button layoutX="436.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Edytuj rezerwację" />
+            <Button layoutX="436.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Usuń rezerwację" />
+            <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie rezerwacjami" />
+          </children></AnchorPane>
+      </content>
+    </Tab>
+
+    <Tab text="Sale">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <children>
+            <TableView layoutX="58.0" layoutY="60.0" prefHeight="252.0">
+              <columns>
+                <TableColumn prefWidth="115.0" text="Numer sali" />
+                <TableColumn prefWidth="132.0" text="Pojemność" />
+              </columns>
+            </TableView>
+            <Button layoutX="449.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Dodaj salę" />
+            <Button layoutX="449.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Edytuj salę" />
+            <Button layoutX="449.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Usuń salę" />
+            <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie salami" />
+          </children></AnchorPane>
+      </content>
+    </Tab>
+
+    <Tab text="Klienci">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <children>
+            <TableView layoutX="58.0" layoutY="60.0" prefHeight="252.0">
+              <columns>
+                <TableColumn prefWidth="31.39999008178711" text="ID" />
+                <TableColumn prefWidth="120.20001220703125" text="Nazwa" />
+                <TableColumn prefWidth="110.20001220703125" text="Adres email" />
+                <TableColumn prefWidth="82.79998779296875" text="Telefon" />
+              </columns>
+            </TableView>
+            <Button layoutX="449.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Dodaj klienta" />
+            <Button layoutX="449.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Edytuj klienta" />
+            <Button layoutX="449.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Usuń klienta" />
+            <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie klientami" />
+          </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
