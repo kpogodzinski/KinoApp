@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="280.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="37.0" layoutY="71.0" text="Numer sali" />
+      <TextField fx:id="numer_sali" disable="true" editable="false" focusTraversable="false" layoutX="106.0" layoutY="67.0" prefHeight="26.0" prefWidth="45.0" />
+      <Label layoutX="36.0" layoutY="112.0" text="Pojemność" />
+      <TextField fx:id="pojemnosc" layoutX="106.0" layoutY="108.0" prefHeight="26.0" prefWidth="58.0" />
+      <Button layoutX="225.0" layoutY="229.0" mnemonicParsing="false" onAction="#save" text="Zapisz" />
+      <Button layoutX="281.0" layoutY="229.0" mnemonicParsing="false" onAction="#cancel" text="Anuluj" />
+      <Label layoutX="112.0" layoutY="22.0" text="Edytuj informacje o sali" />
+   </children>
+</AnchorPane>

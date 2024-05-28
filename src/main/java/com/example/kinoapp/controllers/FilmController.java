@@ -3,9 +3,12 @@ package com.example.kinoapp.controllers;
 import com.example.kinoapp.database.DBManager;
 import com.example.kinoapp.database.FilmyDB;
 import com.example.kinoapp.tableview.Filmy;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -64,7 +67,7 @@ public class FilmController {
         } catch (NumberFormatException e) {
             f.setCzas_trwania(0);
         }
-        DBManager.updateFilm(f);
+        DBManager.update(f);
         cancel(event);
     }
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="280.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="79.0" layoutY="71.0" text="ID" />
+      <TextField fx:id="id_filmu" disable="true" editable="false" focusTraversable="false" layoutX="106.0" layoutY="67.0" prefHeight="26.0" prefWidth="45.0" />
+      <Label layoutX="70.0" layoutY="112.0" text="Film" />
+      <ChoiceBox layoutX="107.0" layoutY="108.0" prefWidth="150.0" />
+      <Label layoutX="18.0" layoutY="152.0" text="Data i godzina" />
+      <DatePicker layoutX="107.0" layoutY="148.0" prefHeight="26.0" prefWidth="101.0" />
+      <Spinner layoutX="217.0" layoutY="148.0" prefHeight="26.0" prefWidth="50.0" />
+      <Label layoutX="272.0" layoutY="145.0" text=":">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Spinner layoutX="281.0" layoutY="148.0" prefHeight="26.0" prefWidth="50.0" />
+      <Label layoutX="71.0" layoutY="190.0" text="Sala" />
+      <ChoiceBox layoutX="107.0" layoutY="186.0" prefWidth="150.0" />
+      <Button layoutX="225.0" layoutY="229.0" mnemonicParsing="false" onAction="#save" text="Zapisz" />
+      <Button layoutX="281.0" layoutY="229.0" mnemonicParsing="false" onAction="#cancel" text="Anuluj" />
+      <Label layoutX="112.0" layoutY="22.0" text="Edytuj informacje o seansie" />
+   </children>
+</AnchorPane>

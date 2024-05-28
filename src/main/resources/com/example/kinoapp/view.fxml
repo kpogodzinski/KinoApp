@@ -7,7 +7,7 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kinoapp.controllers.AppController">
   <tabs>
-    <Tab onSelectionChanged="#tabChanged" text="Filmy">
+    <Tab onSelectionChanged="#fetchFilms" text="Filmy">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -30,15 +30,15 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button layoutX="449.0" layoutY="60.0" mnemonicParsing="false" onAction="#addFilm" prefHeight="30.0" prefWidth="90.0" text="Dodaj film" />
-                  <Button layoutX="449.0" layoutY="101.0" mnemonicParsing="false" onAction="#editFilm" prefHeight="30.0" prefWidth="90.0" text="Edytuj film" />
-                  <Button layoutX="449.0" layoutY="140.0" mnemonicParsing="false" onAction="#deleteFilm" prefHeight="30.0" prefWidth="90.0" text="Usuń film" />
+                  <Button fx:id="addFilmBtn" layoutX="449.0" layoutY="60.0" mnemonicParsing="false" onAction="#editFilm" prefHeight="30.0" prefWidth="90.0" text="Dodaj film" />
+                  <Button fx:id="editFilmBtn" layoutX="449.0" layoutY="101.0" mnemonicParsing="false" onAction="#editFilm" prefHeight="30.0" prefWidth="90.0" text="Edytuj film" />
+                  <Button fx:id="deleteFilmBtn" layoutX="449.0" layoutY="140.0" mnemonicParsing="false" onAction="#deleteFilm" prefHeight="30.0" prefWidth="90.0" text="Usuń film" />
                   <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie filmami" />
                </children></AnchorPane>
       </content>
     </Tab>
 
-    <Tab onSelectionChanged="#tabChanged" text="Seanse">
+    <Tab text="Seanse">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
@@ -58,7 +58,7 @@
       </content>
     </Tab>
 
-    <Tab onSelectionChanged="#tabChanged" text="Rezerwacje">
+    <Tab text="Rezerwacje">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
@@ -78,25 +78,29 @@
       </content>
     </Tab>
 
-    <Tab onSelectionChanged="#tabChanged" text="Sale">
+    <Tab onSelectionChanged="#fetchRooms" text="Sale">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <TableView layoutX="58.0" layoutY="60.0" prefHeight="252.0">
+            <TableView fx:id="roomTable" layoutX="58.0" layoutY="60.0" prefHeight="252.0">
               <columns>
-                <TableColumn prefWidth="115.0" text="Numer sali" />
-                <TableColumn prefWidth="132.0" text="Pojemność" />
+                <TableColumn prefWidth="115.0" text="Numer sali">
+                  <cellValueFactory><PropertyValueFactory property="numer_sali" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="132.0" text="Pojemność">
+                  <cellValueFactory><PropertyValueFactory property="pojemnosc" /></cellValueFactory>
+                </TableColumn>
               </columns>
             </TableView>
-            <Button layoutX="449.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Dodaj salę" />
-            <Button layoutX="449.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Edytuj salę" />
-            <Button layoutX="449.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Usuń salę" />
+            <Button fx:id="addRoomBtn" layoutX="449.0" layoutY="60.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="30.0" prefWidth="90.0" text="Dodaj salę" />
+            <Button fx:id="editRoomBtn" layoutX="449.0" layoutY="101.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="30.0" prefWidth="90.0" text="Edytuj salę" />
+            <Button fx:id="deleteRoomBtn" layoutX="449.0" layoutY="140.0" mnemonicParsing="false" onAction="#deleteRoom" prefHeight="30.0" prefWidth="90.0" text="Usuń salę" />
             <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie salami" />
           </children></AnchorPane>
       </content>
     </Tab>
 
-    <Tab onSelectionChanged="#tabChanged" text="Klienci">
+    <Tab text="Klienci">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
@@ -117,7 +121,7 @@
       </content>
     </Tab>
 
-    <Tab onSelectionChanged="#tabChanged" text="O programie">
+    <Tab text="O programie">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
