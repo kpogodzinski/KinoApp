@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Rezerwacje {
+public class RezerwacjeDB {
     @Id
     private long id_rezerwacji;
     private long id_seansu;

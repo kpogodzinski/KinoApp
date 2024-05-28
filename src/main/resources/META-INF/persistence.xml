@@ -13,11 +13,11 @@ https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
                       value="org.postgresql.Driver" />
             <!-- The JDBC URL to the database instance -->
             <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:postgresql://sxterm:5432/kpogodzinski_pdw" />
+                      value="jdbc:postgresql://localhost:5432/postgres" />
             <!-- The database username -->
-            <property name="jakarta.persistence.jdbc.user" value="kpogodzinski" />
+            <property name="jakarta.persistence.jdbc.user" value="postgres" />
             <!-- The database password -->
-            <property name="jakarta.persistence.jdbc.password" value="KacperP2002!" />
+            <property name="jakarta.persistence.jdbc.password" value="zaq1@WSX" />
         </properties>
     </persistence-unit>
 </persistence>

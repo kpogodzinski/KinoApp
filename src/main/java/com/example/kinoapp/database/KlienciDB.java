@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Klienci {
+public class KlienciDB {
     @Id
     private long id_klienta;
     private String imie;

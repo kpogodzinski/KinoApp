@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kinoapp.controllers.AppController">
   <tabs>
-    <Tab text="Filmy">
+    <Tab onSelectionChanged="#tabChanged" text="Filmy">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView layoutX="58.0" layoutY="60.0" prefHeight="252.0">
+                  <TableView fx:id="filmTable" focusTraversable="false" layoutX="58.0" layoutY="60.0" prefHeight="252.0">
                     <columns>
-                      <TableColumn prefWidth="31.39999008178711" text="ID" />
-                      <TableColumn prefWidth="158.99996948242188" text="Tytuł" />
-                        <TableColumn prefWidth="70.60005187988281" text="Gatunek" />
-                        <TableColumn prefWidth="82.79998779296875" text="Czas trwania" />
+                      <TableColumn prefWidth="31.39999008178711" text="ID">
+                        <cellValueFactory><PropertyValueFactory property="id_filmu" /></cellValueFactory>
+                      </TableColumn>
+                      <TableColumn prefWidth="149.19998168945312" text="Tytuł">
+                        <cellValueFactory><PropertyValueFactory property="tytul" /></cellValueFactory>
+                      </TableColumn>
+                      <TableColumn prefWidth="81.20002746582031" text="Gatunek">
+                        <cellValueFactory><PropertyValueFactory property="gatunek" /></cellValueFactory>
+                      </TableColumn>
+                      <TableColumn prefWidth="82.79998779296875" text="Czas trwania">
+                        <cellValueFactory><PropertyValueFactory property="czas_trwania" /></cellValueFactory>
+                      </TableColumn>
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
-                  <Button layoutX="449.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Dodaj film" />
-                  <Button layoutX="449.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Edytuj film" />
-                  <Button layoutX="449.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Usuń film" />
+                  <Button layoutX="449.0" layoutY="60.0" mnemonicParsing="false" onAction="#addFilm" prefHeight="30.0" prefWidth="90.0" text="Dodaj film" />
+                  <Button layoutX="449.0" layoutY="101.0" mnemonicParsing="false" onAction="#editFilm" prefHeight="30.0" prefWidth="90.0" text="Edytuj film" />
+                  <Button layoutX="449.0" layoutY="140.0" mnemonicParsing="false" onAction="#deleteFilm" prefHeight="30.0" prefWidth="90.0" text="Usuń film" />
                   <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie filmami" />
                </children></AnchorPane>
       </content>
     </Tab>
 
-    <Tab text="Seanse">
+    <Tab onSelectionChanged="#tabChanged" text="Seanse">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
@@ -46,7 +58,7 @@
       </content>
     </Tab>
 
-    <Tab text="Rezerwacje">
+    <Tab onSelectionChanged="#tabChanged" text="Rezerwacje">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
@@ -66,7 +78,7 @@
       </content>
     </Tab>
 
-    <Tab text="Sale">
+    <Tab onSelectionChanged="#tabChanged" text="Sale">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
@@ -84,7 +96,7 @@
       </content>
     </Tab>
 
-    <Tab text="Klienci">
+    <Tab onSelectionChanged="#tabChanged" text="Klienci">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
@@ -105,7 +117,7 @@
       </content>
     </Tab>
 
-    <Tab text="O programie">
+    <Tab onSelectionChanged="#tabChanged" text="O programie">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
