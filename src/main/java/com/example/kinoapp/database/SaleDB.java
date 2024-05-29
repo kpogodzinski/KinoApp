@@ -11,7 +11,7 @@ public class SaleDB {
     @Id
     private long numer_sali;
     private int pojemnosc;
-    @OneToMany
+    @OneToMany(mappedBy = "id_seansu")
     private List<SeanseDB> seanse;
 
     public SaleDB() {

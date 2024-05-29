@@ -11,7 +11,7 @@ public class FilmyDB {
     private String tytul;
     private String gatunek;
     private int czas_trwania;
-    @OneToMany
+    @OneToMany(mappedBy = "id_seansu")
     private List<SeanseDB> seanse;
 
     public FilmyDB() {

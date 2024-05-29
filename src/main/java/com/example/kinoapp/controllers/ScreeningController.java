@@ -1,6 +1,7 @@
 package com.example.kinoapp.controllers;
 
 import com.example.kinoapp.database.DBManager;
+import com.example.kinoapp.database.FilmyDB;
 import com.example.kinoapp.database.SeanseDB;
 import com.example.kinoapp.tableview.Seanse;
 import javafx.collections.FXCollections;
@@ -80,7 +81,26 @@ public class ScreeningController implements SmallController {
     }
 
     public void save(Event event) {
-
+        SeanseDB s = new SeanseDB();
+        s.setId_seansu(Long.parseLong(id_seansu.getText()));
+        s.setData_godzina(Timestamp.valueOf(data.getValue().toString() + " " + godzina.getValue()
+                + ":" + minuta.getValue() + ":00"));
+        DBManager.getFilms().forEach(film -> {
+            if (film.getTytul().equals(this.film.getValue()))
+                s.setFilm(film);
+        });
+        DBManager.getRooms().forEach(room -> {
+            if (room.getNumer_sali() == this.sala.getValue())
+                s.setSala(room);
+        });
+        try {
+            DBManager.update(s);
+            cancel(event);
+        } catch (NumberFormatException e) {
+            Alert error = new Alert(Alert.AlertType.NONE, "Pole Czas trwania jest puste " +
+                    "lub zawiera niedozwolone znaki.", ButtonType.OK);
+            error.showAndWait();
+        }
     }
 
     @Override
