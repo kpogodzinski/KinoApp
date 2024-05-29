@@ -2,12 +2,17 @@ package com.example.kinoapp.database;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity(name = "Sale")
 public class SaleDB {
     @Id
     private long numer_sali;
     private int pojemnosc;
+    @OneToMany
+    private List<SeanseDB> seanse;
 
     public SaleDB() {
     }
@@ -26,5 +31,13 @@ public class SaleDB {
 
     public void setPojemnosc(int pojemnosc) {
         this.pojemnosc = pojemnosc;
+    }
+
+    public List<SeanseDB> getSeanse() {
+        return seanse;
+    }
+
+    public void setSeanse(List<SeanseDB> seanse) {
+        this.seanse = seanse;
     }
 }

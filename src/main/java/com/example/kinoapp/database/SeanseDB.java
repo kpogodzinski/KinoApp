@@ -2,6 +2,8 @@ package com.example.kinoapp.database;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.sql.Timestamp;
 
@@ -9,9 +11,13 @@ import java.sql.Timestamp;
 public class SeanseDB {
     @Id
     private long id_seansu;
-    private long id_filmu;
+    @ManyToOne
+    @JoinColumn(name = "id_filmu")
+    private FilmyDB film;
     private Timestamp data_godzina;
-    private long numer_sali;
+    @ManyToOne
+    @JoinColumn(name = "numer_sali")
+    private SaleDB sala;
 
     public SeanseDB() {
     }
@@ -24,14 +30,6 @@ public class SeanseDB {
         this.id_seansu = id_seansu;
     }
 
-    public long getId_filmu() {
-        return id_filmu;
-    }
-
-    public void setId_filmu(long id_filmu) {
-        this.id_filmu = id_filmu;
-    }
-
     public Timestamp getData_godzina() {
         return data_godzina;
     }
@@ -40,11 +38,20 @@ public class SeanseDB {
         this.data_godzina = data_godzina;
     }
 
-    public long getNumer_sali() {
-        return numer_sali;
+
+    public FilmyDB getFilm() {
+        return film;
     }
 
-    public void setNumer_sali(long numer_sali) {
-        this.numer_sali = numer_sali;
+    public void setFilm(FilmyDB film) {
+        this.film = film;
+    }
+
+    public SaleDB getSala() {
+        return sala;
+    }
+
+    public void setSala(SaleDB sala) {
+        this.sala = sala;
     }
 }

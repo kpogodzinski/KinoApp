@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import org.hibernate.exception.ConstraintViolationException;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 public class AppController {
     private final Stage stage = new Stage();
@@ -35,6 +36,10 @@ public class AppController {
     private Button addClientBtn;
     @FXML
     private Button editClientBtn;
+    @FXML
+    private Button addScreeningBtn;
+    @FXML
+    private Button editScreeningBtn;
 
     @FXML
     private TableView<Filmy> filmTable;
@@ -42,6 +47,8 @@ public class AppController {
     private TableView<Sale> roomTable;
     @FXML
     private TableView<Klienci> clientTable;
+    @FXML
+    private TableView<Seanse> screeningTable;
 
     @FXML
     private void initialize() {
@@ -69,6 +76,12 @@ public class AppController {
         ObservableList<Klienci> klienci = FXCollections.observableArrayList();
         clientTable.setItems(klienci);
         DBManager.getClients().forEach(o -> klienci.add(new Klienci(o)));
+    }
+    @FXML
+    private void fetchScreenings() {
+        ObservableList<Seanse> seanse = FXCollections.observableArrayList();
+        screeningTable.setItems(seanse);
+        DBManager.getScreenings().forEach(o -> seanse.add(new Seanse(o)));
     }
 
     @FXML
@@ -190,5 +203,46 @@ public class AppController {
                 }
             }
         }
+    }
+
+    @FXML
+    private void editScreening(Event event) throws IOException {
+        ScreeningController screeningController;
+        if (event.getSource().equals(editScreeningBtn)) {
+            screeningController = new ScreeningController(true);
+            screeningController.setScreening(screeningTable.getSelectionModel().getSelectedItem());
+        }
+        else
+            screeningController = new ScreeningController(false);
+        if (event.getSource().equals(addScreeningBtn) || screeningTable.getSelectionModel().getSelectedItem() != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(Application.class.getResource("seans.fxml"));
+            fxmlLoader.setController(screeningController);
+            stage.setScene(new Scene(fxmlLoader.load(), 360, 280));
+            stage.setTitle("Edytuj informacje o seansie");
+            stage.showAndWait();
+            fetchScreenings();
+        }
+    }
+    @FXML
+    private void deleteScreening() {
+//        if (clientTable.getSelectionModel().getSelectedItem() != null) {
+//            Alert alert = new Alert(Alert.AlertType.NONE, "Czy na pewno chcesz usunąć klienta "
+//                    + clientTable.getSelectionModel().getSelectedItem().getImie() + " "
+//                    + clientTable.getSelectionModel().getSelectedItem().getNazwisko()
+//                    + "?", ButtonType.YES, ButtonType.NO);
+//            alert.setTitle("Potwierdzenie");
+//            alert.showAndWait();
+//            if (alert.getResult() == ButtonType.YES) {
+//                try {
+//                    DBManager.delete(KlienciDB.class, clientTable.getSelectionModel().getSelectedItem().getId_klienta());
+//                    fetchClients();
+//                } catch (RollbackException e) {
+//                    Alert error = new Alert(Alert.AlertType.NONE, "Nie można usunąć klienta," +
+//                            " ponieważ ma on wpisaną rezerwację.", ButtonType.OK);
+//                    error.showAndWait();
+//                }
+//            }
+//        }
     }
 }

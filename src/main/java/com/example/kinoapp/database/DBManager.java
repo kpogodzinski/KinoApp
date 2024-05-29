@@ -1,5 +1,6 @@
 package com.example.kinoapp.database;
 
+import com.example.kinoapp.tableview.Seanse;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -19,20 +20,12 @@ public class DBManager {
     public static List<KlienciDB> getClients() {
         return EntityManager.createQuery("SELECT k FROM Klienci k").getResultList();
     }
-
-//    public static void updateFilm(FilmyDB f) {
-//        EntityTransaction transaction = EntityManager.getTransaction();
-//        transaction.begin();
-//        EntityManager.merge(f);
-//        transaction.commit();
-//    }
-//
-//    public static void updateRoom(SaleDB s) {
-//        EntityTransaction transaction = EntityManager.getTransaction();
-//        transaction.begin();
-//        EntityManager.merge(s);
-//        transaction.commit();
-//    }
+    public static List<SeanseDB> getScreenings() {
+        return EntityManager.createQuery("SELECT s FROM Seanse s").getResultList();
+    }
+    public static List<RezerwacjeDB> getBookings() {
+        return EntityManager.createQuery("SELECT r FROM Rezerwacje r").getResultList();
+    }
 
     public static <Entity> void update(Entity e) {
         EntityTransaction transaction = EntityManager.getTransaction();
@@ -40,13 +33,6 @@ public class DBManager {
         EntityManager.merge(e);
         transaction.commit();
     }
-
-//    public static void deleteFilm(long id_filmu) {
-//        EntityTransaction transaction = EntityManager.getTransaction();
-//        transaction.begin();
-//        EntityManager.remove(EntityManager.find(FilmyDB.class, id_filmu));
-//        transaction.commit();
-//    }
 
     public static void delete(Class<?> entity, long id) {
         EntityTransaction transaction = EntityManager.getTransaction();

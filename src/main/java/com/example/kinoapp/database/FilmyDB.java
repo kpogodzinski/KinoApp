@@ -2,6 +2,8 @@ package com.example.kinoapp.database;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity(name = "Filmy")
 public class FilmyDB {
     @Id
@@ -9,6 +11,8 @@ public class FilmyDB {
     private String tytul;
     private String gatunek;
     private int czas_trwania;
+    @OneToMany
+    private List<SeanseDB> seanse;
 
     public FilmyDB() {
     }
@@ -43,5 +47,13 @@ public class FilmyDB {
 
     public void setCzas_trwania(int czas_trwania) {
         this.czas_trwania = czas_trwania;
+    }
+
+    public List<SeanseDB> getSeanse() {
+        return seanse;
+    }
+
+    public void setSeanse(List<SeanseDB> seanse) {
+        this.seanse = seanse;
     }
 }
