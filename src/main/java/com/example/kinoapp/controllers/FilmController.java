@@ -53,19 +53,23 @@ public class FilmController implements SmallController {
 
     @FXML
     public void save(Event event) {
-        FilmyDB f = new FilmyDB();
-        f.setId_filmu(Long.parseLong(id_filmu.getText()));
-        f.setTytul(tytul.getText());
-        f.setGatunek(gatunek.getText());
         try {
+            FilmyDB f = new FilmyDB();
+            f.setId_filmu(Long.parseLong(id_filmu.getText()));
+            if (tytul.getText().isEmpty() || gatunek.getText().isEmpty() || czas_trwania.getText().isEmpty())
+                throw new IllegalArgumentException();
+            f.setTytul(tytul.getText());
+            f.setGatunek(gatunek.getText());
             f.setCzas_trwania(Integer.parseInt(czas_trwania.getText()));
             if (f.getCzas_trwania() <= 0)
                 throw new NumberFormatException();
             DBManager.update(f);
             cancel(event);
         } catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pole Czas trwania jest puste " +
-                    "lub zawiera niedozwolone znaki.", ButtonType.OK);
+            Alert error = new Alert(Alert.AlertType.NONE, "Pole Czas trwania zawiera niedozwolone znaki.", ButtonType.OK);
+            error.showAndWait();
+        } catch (IllegalArgumentException e) {
+            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
             error.showAndWait();
         }
     }

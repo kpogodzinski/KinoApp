@@ -10,6 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
+import java.util.Calendar;
+
 public class ClientController implements SmallController {
     @FXML
     private TextField id_klienta;
@@ -57,20 +59,24 @@ public class ClientController implements SmallController {
 
     @FXML
     public void save(Event event) {
-        KlienciDB k = new KlienciDB();
-        k.setId_klienta(Long.parseLong(id_klienta.getText()));
-        k.setImie(imie.getText());
-        k.setNazwisko(nazwisko.getText());
-        k.setEmail(email.getText());
-        k.setTelefon(telefon.getText());
         try {
+            KlienciDB k = new KlienciDB();
+            k.setId_klienta(Long.parseLong(id_klienta.getText()));
+            if (imie.getText().isEmpty() || nazwisko.getText().isEmpty() || email.getText().isEmpty() || telefon.getText().isEmpty())
+                throw new IllegalArgumentException();
+            k.setImie(imie.getText());
+            k.setNazwisko(nazwisko.getText());
+            k.setEmail(email.getText());
+            k.setTelefon(telefon.getText());
             if (Long.parseLong(telefon.getText()) < 0)
                 throw new NumberFormatException();
             DBManager.update(k);
             cancel(event);
         } catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pole Telefon jest puste " +
-                    "lub zawiera niedozwolone znaki.", ButtonType.OK);
+            Alert error = new Alert(Alert.AlertType.NONE, "Pole Telefon zawiera niedozwolone znaki.", ButtonType.OK);
+            error.showAndWait();
+        } catch (IllegalArgumentException e) {
+            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
             error.showAndWait();
         } catch (RollbackException e) {
             Alert error = new Alert(Alert.AlertType.NONE, "Adres email jest już zarejestrowany w bazie.", ButtonType.OK);

@@ -49,17 +49,21 @@ public class RoomController implements SmallController {
 
     @FXML
     public void save(Event event) {
-        SaleDB s = new SaleDB();
-        s.setNumer_sali(Long.parseLong(numer_sali.getText()));
         try {
+            SaleDB s = new SaleDB();
+            s.setNumer_sali(Long.parseLong(numer_sali.getText()));
+            if (pojemnosc.getText().isEmpty())
+                throw new IllegalArgumentException();
             s.setPojemnosc(Integer.parseInt(pojemnosc.getText()));
             if (s.getPojemnosc() <= 0)
                 throw new NumberFormatException();
             DBManager.update(s);
             cancel(event);
         } catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pole Pojemność jest puste " +
-                    "lub zawiera niedozwolone znaki.", ButtonType.OK);
+            Alert error = new Alert(Alert.AlertType.NONE, "Pole Pojemność zawiera niedozwolone znaki.", ButtonType.OK);
+            error.showAndWait();
+        } catch (IllegalArgumentException e) {
+            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
             error.showAndWait();
         }
     }

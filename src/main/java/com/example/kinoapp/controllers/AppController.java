@@ -226,23 +226,21 @@ public class AppController {
     }
     @FXML
     private void deleteScreening() {
-//        if (clientTable.getSelectionModel().getSelectedItem() != null) {
-//            Alert alert = new Alert(Alert.AlertType.NONE, "Czy na pewno chcesz usunąć klienta "
-//                    + clientTable.getSelectionModel().getSelectedItem().getImie() + " "
-//                    + clientTable.getSelectionModel().getSelectedItem().getNazwisko()
-//                    + "?", ButtonType.YES, ButtonType.NO);
-//            alert.setTitle("Potwierdzenie");
-//            alert.showAndWait();
-//            if (alert.getResult() == ButtonType.YES) {
-//                try {
-//                    DBManager.delete(KlienciDB.class, clientTable.getSelectionModel().getSelectedItem().getId_klienta());
-//                    fetchClients();
-//                } catch (RollbackException e) {
-//                    Alert error = new Alert(Alert.AlertType.NONE, "Nie można usunąć klienta," +
-//                            " ponieważ ma on wpisaną rezerwację.", ButtonType.OK);
-//                    error.showAndWait();
-//                }
-//            }
-//        }
+        if (screeningTable.getSelectionModel().getSelectedItem() != null) {
+            Alert alert = new Alert(Alert.AlertType.NONE, "Czy na pewno chcesz usunąć wybrany seans?",
+                    ButtonType.YES, ButtonType.NO);
+            alert.setTitle("Potwierdzenie");
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                try {
+                    DBManager.delete(SeanseDB.class, screeningTable.getSelectionModel().getSelectedItem().getId_seansu());
+                    fetchScreenings();
+                } catch (RollbackException e) {
+                    Alert error = new Alert(Alert.AlertType.NONE, "Nie można usunąć wybranego seansu, " +
+                            "ponieważ jest on przypisany do rezerwacji.", ButtonType.OK);
+                    error.showAndWait();
+                }
+            }
+        }
     }
 }

@@ -45,20 +45,25 @@ public class ScreeningController implements SmallController {
     }
 
     public void initialize() {
+        // Ustawienie domyślnej daty na dzisiejszą
+        data.setValue(LocalDate.now());
+
         // Ustawienia spinnerów
         godzina.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 12, 1));
         minuta.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10));
         godzina.getValueFactory().setWrapAround(true);
         minuta.getValueFactory().setWrapAround(true);
 
-        // Dodanie tytułów filmów do listy combo
-        ObservableList<String> titles = FXCollections.observableArrayList();
-        DBManager.getFilms().forEach(film -> titles.add(film.getTytul()));
-        film.setItems(titles);
+        // Dodanie posortowanych tytułów filmów do listy combo
+        ObservableList<String> filmTitles = FXCollections.observableArrayList();
+        DBManager.getFilms().forEach(film -> filmTitles.add(film.getTytul()));
+        filmTitles.sort(String::compareToIgnoreCase);
+        film.setItems(filmTitles);
 
-        // Dodanie numerów sal do listy combo
+        // Dodanie posortowanych numerów sal do listy combo
         ObservableList<Long> roomNumbers = FXCollections.observableArrayList();
         DBManager.getRooms().forEach(room -> roomNumbers.add(room.getNumer_sali()));
+        roomNumbers.sort(Long::compare);
         sala.setItems(roomNumbers);
 
         if (editMode) {
@@ -80,25 +85,26 @@ public class ScreeningController implements SmallController {
         }
     }
 
-    public void save(Event event) {
+    public void save(Event event)  {
         SeanseDB s = new SeanseDB();
         s.setId_seansu(Long.parseLong(id_seansu.getText()));
         s.setData_godzina(Timestamp.valueOf(data.getValue().toString() + " " + godzina.getValue()
                 + ":" + minuta.getValue() + ":00"));
-        DBManager.getFilms().forEach(film -> {
-            if (film.getTytul().equals(this.film.getValue()))
-                s.setFilm(film);
-        });
-        DBManager.getRooms().forEach(room -> {
-            if (room.getNumer_sali() == this.sala.getValue())
-                s.setSala(room);
-        });
         try {
+            if (film.getValue().isEmpty())
+                throw new NullPointerException();
+            DBManager.getFilms().forEach(film -> {
+                if (film.getTytul().equals(this.film.getValue()))
+                    s.setFilm(film);
+            });
+            DBManager.getRooms().forEach(room -> {
+                if (room.getNumer_sali() == this.sala.getValue())
+                    s.setSala(room);
+            });
             DBManager.update(s);
             cancel(event);
-        } catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pole Czas trwania jest puste " +
-                    "lub zawiera niedozwolone znaki.", ButtonType.OK);
+        } catch (NullPointerException e) {
+            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
             error.showAndWait();
         }
     }
