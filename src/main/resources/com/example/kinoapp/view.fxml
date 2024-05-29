@@ -82,7 +82,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <TableView fx:id="roomTable" layoutX="58.0" layoutY="60.0" prefHeight="252.0">
+            <TableView fx:id="roomTable" focusTraversable="false" layoutX="58.0" layoutY="60.0" prefHeight="252.0">
               <columns>
                 <TableColumn prefWidth="115.0" text="Numer sali">
                   <cellValueFactory><PropertyValueFactory property="numer_sali" /></cellValueFactory>
@@ -91,6 +91,9 @@
                   <cellValueFactory><PropertyValueFactory property="pojemnosc" /></cellValueFactory>
                 </TableColumn>
               </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
             </TableView>
             <Button fx:id="addRoomBtn" layoutX="449.0" layoutY="60.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="30.0" prefWidth="90.0" text="Dodaj salę" />
             <Button fx:id="editRoomBtn" layoutX="449.0" layoutY="101.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="30.0" prefWidth="90.0" text="Edytuj salę" />
@@ -100,22 +103,35 @@
       </content>
     </Tab>
 
-    <Tab text="Klienci">
+    <Tab onSelectionChanged="#fetchClients" text="Klienci">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <TableView layoutX="24.0" layoutY="60.0" prefHeight="252.0">
+            <TableView fx:id="clientTable" focusTraversable="false" layoutX="33.0" layoutY="60.0" prefHeight="252.0">
               <columns>
-                <TableColumn prefWidth="31.39999008178711" text="ID" />
-                <TableColumn prefWidth="74.39999008178711" text="Imię" />
-                        <TableColumn prefWidth="120.0" text="Nazwisko" />
-                <TableColumn prefWidth="97.59999084472656" text="Adres email" />
-                <TableColumn prefWidth="98.20001220703125" text="Telefon" />
+                <TableColumn prefWidth="31.39999008178711" text="ID">
+                  <cellValueFactory><PropertyValueFactory property="id_klienta" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="74.39998626708984" text="Imię">
+                  <cellValueFactory><PropertyValueFactory property="imie" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="102.4000244140625" text="Nazwisko">
+                  <cellValueFactory><PropertyValueFactory property="nazwisko" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="125.0" text="Email">
+                  <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="89.39996337890625" text="Telefon">
+                  <cellValueFactory><PropertyValueFactory property="telefon" /></cellValueFactory>
+                </TableColumn>
               </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
             </TableView>
-            <Button layoutX="449.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Dodaj klienta" />
-            <Button layoutX="449.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Edytuj klienta" />
-            <Button layoutX="449.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Usuń klienta" />
+            <Button fx:id="addClientBtn" layoutX="480.0" layoutY="60.0" mnemonicParsing="false" onAction="#editClient" prefHeight="30.0" prefWidth="90.0" text="Dodaj klienta" />
+            <Button fx:id="editClientBtn" layoutX="480.0" layoutY="101.0" mnemonicParsing="false" onAction="#editClient" prefHeight="30.0" prefWidth="90.0" text="Edytuj klienta" />
+            <Button fx:id="deleteClientBtn" layoutX="480.0" layoutY="140.0" mnemonicParsing="false" onAction="#deleteClient" prefHeight="30.0" prefWidth="90.0" text="Usuń klienta" />
             <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie klientami" />
           </children></AnchorPane>
       </content>

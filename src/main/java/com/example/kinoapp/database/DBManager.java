@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class DBManager {
     private static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("MyUnit");
     private static final EntityManager EntityManager = FACTORY.createEntityManager();
@@ -14,6 +15,9 @@ public class DBManager {
     }
     public static List<SaleDB> getRooms() {
         return EntityManager.createQuery("SELECT s FROM Sale s").getResultList();
+    }
+    public static List<KlienciDB> getClients() {
+        return EntityManager.createQuery("SELECT k FROM Klienci k").getResultList();
     }
 
 //    public static void updateFilm(FilmyDB f) {
@@ -61,6 +65,8 @@ public class DBManager {
                 id = EntityManager.createQuery("SELECT MAX(s.id_seansu) FROM Seanse s").getResultList();
                 break;
             case "Klienci":
+                id = EntityManager.createQuery("SELECT MAX(k.id_klienta) FROM Klienci k").getResultList();
+                break;
             case "Sale":
                 id = EntityManager.createQuery("SELECT MAX(s.numer_sali) FROM Sale s").getResultList();
                 break;

@@ -31,11 +31,17 @@ public class AppController {
     private Button addRoomBtn;
     @FXML
     private Button editRoomBtn;
+    @FXML
+    private Button addClientBtn;
+    @FXML
+    private Button editClientBtn;
 
     @FXML
     private TableView<Filmy> filmTable;
     @FXML
     private TableView<Sale> roomTable;
+    @FXML
+    private TableView<Klienci> clientTable;
 
     @FXML
     private void initialize() {
@@ -57,6 +63,12 @@ public class AppController {
         ObservableList<Sale> sale = FXCollections.observableArrayList();
         roomTable.setItems(sale);
         DBManager.getRooms().forEach(o -> sale.add(new Sale(o)));
+    }
+    @FXML
+    private void fetchClients() {
+        ObservableList<Klienci> klienci = FXCollections.observableArrayList();
+        clientTable.setItems(klienci);
+        DBManager.getClients().forEach(o -> klienci.add(new Klienci(o)));
     }
 
     @FXML
@@ -87,8 +99,14 @@ public class AppController {
             alert.setTitle("Potwierdzenie");
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
-                DBManager.delete(FilmyDB.class, filmTable.getSelectionModel().getSelectedItem().getId_filmu());
-                fetchFilms();
+                try {
+                    DBManager.delete(FilmyDB.class, filmTable.getSelectionModel().getSelectedItem().getId_filmu());
+                    fetchFilms();
+                } catch (RollbackException e) {
+                    Alert error = new Alert(Alert.AlertType.NONE, "Nie można usunąć filmu, " +
+                            "ponieważ zaplanowane są jego seanse.", ButtonType.OK);
+                    error.showAndWait();
+                }
             }
         }
     }
@@ -127,6 +145,47 @@ public class AppController {
                 } catch (RollbackException e) {
                     Alert error = new Alert(Alert.AlertType.NONE, "Nie można usunąć sali," +
                             " ponieważ przypisane są do niej seanse.", ButtonType.OK);
+                    error.showAndWait();
+                }
+            }
+        }
+    }
+
+    @FXML
+    private void editClient(Event event) throws IOException {
+        ClientController clientController;
+        if (event.getSource().equals(editClientBtn)) {
+            clientController = new ClientController(true);
+            clientController.setClient(clientTable.getSelectionModel().getSelectedItem());
+        }
+        else
+            clientController = new ClientController(false);
+        if (event.getSource().equals(addClientBtn) || clientTable.getSelectionModel().getSelectedItem() != null) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(Application.class.getResource("klient.fxml"));
+            fxmlLoader.setController(clientController);
+            stage.setScene(new Scene(fxmlLoader.load(), 360, 280));
+            stage.setTitle("Edytuj informacje o kliencie");
+            stage.showAndWait();
+            fetchClients();
+        }
+    }
+    @FXML
+    private void deleteClient() {
+        if (clientTable.getSelectionModel().getSelectedItem() != null) {
+            Alert alert = new Alert(Alert.AlertType.NONE, "Czy na pewno chcesz usunąć klienta "
+                    + clientTable.getSelectionModel().getSelectedItem().getImie() + " "
+                    + clientTable.getSelectionModel().getSelectedItem().getNazwisko()
+                    + "?", ButtonType.YES, ButtonType.NO);
+            alert.setTitle("Potwierdzenie");
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                try {
+                    DBManager.delete(KlienciDB.class, clientTable.getSelectionModel().getSelectedItem().getId_klienta());
+                    fetchClients();
+                } catch (RollbackException e) {
+                    Alert error = new Alert(Alert.AlertType.NONE, "Nie można usunąć klienta," +
+                            " ponieważ ma on wpisaną rezerwację.", ButtonType.OK);
                     error.showAndWait();
                 }
             }

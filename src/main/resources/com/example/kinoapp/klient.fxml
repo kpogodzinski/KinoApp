@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="280.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <Label layoutX="107.0" layoutY="21.0" text="Edytuj informacje o kliencie" />
+   <Label layoutX="79.0" layoutY="61.0" text="ID" />
+   <TextField fx:id="id_klienta" disable="true" editable="false" focusTraversable="false" layoutX="106.0" layoutY="57.0" prefHeight="26.0" prefWidth="45.0" />
+   <Label layoutX="67.0" layoutY="94.0" text="Imię" />
+   <TextField fx:id="imie" layoutX="106.0" layoutY="90.0" prefHeight="26.0" prefWidth="113.0" />
+   <Label layoutX="40.0" layoutY="128.0" text="Nazwisko" />
+   <TextField fx:id="nazwisko" layoutX="107.0" layoutY="124.0" prefHeight="26.0" prefWidth="159.0" />
+   <Label layoutX="60.0" layoutY="162.0" text="Email" />
+   <TextField fx:id="email" layoutX="107.0" layoutY="158.0" prefHeight="26.0" prefWidth="159.0" />
+   <Label layoutX="50.0" layoutY="195.0" text="Telefon" />
+   <TextField fx:id="telefon" layoutX="107.0" layoutY="191.0" prefHeight="26.0" prefWidth="114.0" />
+   <Button defaultButton="true" layoutX="225.0" layoutY="229.0" mnemonicParsing="false" onAction="#save" text="Zapisz" />
+   <Button cancelButton="true" layoutX="281.0" layoutY="229.0" mnemonicParsing="false" onAction="#cancel" text="Anuluj" />
+</AnchorPane>

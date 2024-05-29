@@ -5,13 +5,11 @@ import com.example.kinoapp.database.SaleDB;
 import com.example.kinoapp.tableview.Sale;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-import javax.crypto.spec.PSource;
-
-public class RoomController {
+public class RoomController implements SmallController {
     @FXML
     private TextField numer_sali;
     @FXML
@@ -34,7 +32,7 @@ public class RoomController {
     }
 
     @FXML
-    private void initialize() {
+    public void initialize() {
         if (editMode) {
             numer_sali.setText(Long.toString(room.getNumer_sali()));
             pojemnosc.setText(Integer.toString(room.getPojemnosc()));
@@ -50,23 +48,24 @@ public class RoomController {
     }
 
     @FXML
-    private void save(Event event) {
+    public void save(Event event) {
         SaleDB s = new SaleDB();
         s.setNumer_sali(Long.parseLong(numer_sali.getText()));
         try {
             s.setPojemnosc(Integer.parseInt(pojemnosc.getText()));
-            if (s.getPojemnosc() < 0)
+            if (s.getPojemnosc() <= 0)
                 throw new NumberFormatException();
+            DBManager.update(s);
+            cancel(event);
         } catch (NumberFormatException e) {
-            s.setPojemnosc(0);
+            Alert error = new Alert(Alert.AlertType.NONE, "Pole Pojemność jest puste " +
+                    "lub zawiera niedozwolone znaki.", ButtonType.OK);
+            error.showAndWait();
         }
-        DBManager.update(s);
-        cancel(event);
     }
-    @FXML
-    private void cancel(Event event) {
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
+
+    @Override
+    public void cancel(Event event) {
+        SmallController.super.cancel(event);
     }
 }
