@@ -57,6 +57,8 @@ public class DBManager {
                 id = EntityManager.createQuery("SELECT MAX(s.numer_sali) FROM Sale s").getResultList();
                 break;
             case "Rezerwacje":
+                id = EntityManager.createQuery("SELECT MAX(r.id_rezerwacji) FROM Rezerwacje r").getResultList();
+                break;
         }
         if (id.isEmpty())
             return -1;

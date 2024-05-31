@@ -5,13 +5,13 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kinoapp.controllers.AppController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kinoapp.controllers.AppController">
   <tabs>
     <Tab closable="false" onSelectionChanged="#fetchFilms" text="Filmy">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="filmTable" focusTraversable="false" layoutX="58.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="50.0">
+                  <TableView fx:id="filmTable" focusTraversable="false" layoutX="58.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
                     <columns>
                       <TableColumn prefWidth="30.0" text="ID">
                         <cellValueFactory><PropertyValueFactory property="id_filmu" /></cellValueFactory>
@@ -30,10 +30,10 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button fx:id="addFilmBtn" layoutX="449.0" layoutY="60.0" mnemonicParsing="false" onAction="#editFilm" prefHeight="30.0" prefWidth="90.0" text="Dodaj film" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0" />
-                  <Button fx:id="editFilmBtn" layoutX="449.0" layoutY="101.0" mnemonicParsing="false" onAction="#editFilm" prefHeight="30.0" prefWidth="90.0" text="Edytuj film" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                  <Button fx:id="deleteFilmBtn" layoutX="449.0" layoutY="140.0" mnemonicParsing="false" onAction="#deleteFilm" prefHeight="30.0" prefWidth="90.0" text="Usuń film" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0" />
-                  <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie filmami" AnchorPane.topAnchor="20.0" />
+                  <Button fx:id="addFilmBtn" layoutX="479.6" layoutY="60.0" mnemonicParsing="false" onAction="#editFilm" prefHeight="30.0" prefWidth="90.0" text="Dodaj film" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
+                  <Button fx:id="editFilmBtn" layoutX="479.6" layoutY="110.0" mnemonicParsing="false" onAction="#editFilm" prefHeight="30.0" prefWidth="90.0" text="Edytuj film" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="110.0" />
+                  <Button fx:id="deleteFilmBtn" layoutX="479.6" layoutY="160.0" mnemonicParsing="false" onAction="#deleteFilm" prefHeight="30.0" prefWidth="90.0" text="Usuń film" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="160.0" />
+                  <Label layoutX="247.0" layoutY="22.0" styleClass="header" text="Zarządzanie filmami" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -42,18 +42,18 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <TableView fx:id="screeningTable" focusTraversable="false" layoutX="44.0" layoutY="60.0" prefHeight="252.0" prefWidth="405.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="50.0">
+            <TableView fx:id="screeningTable" focusTraversable="false" layoutX="44.0" layoutY="60.0" prefHeight="252.0" prefWidth="405.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
               <columns>
-                <TableColumn prefWidth="74.80002021789551" text="ID">
+                <TableColumn prefWidth="30.0" text="ID">
                   <cellValueFactory><PropertyValueFactory property="id_seansu" /></cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="150.79998016357422" text="Film">
+                <TableColumn prefWidth="230.0" text="Film">
                   <cellValueFactory><PropertyValueFactory property="film" /></cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="144.20001220703125" text="Data i godzina">
+                <TableColumn prefWidth="120.0" text="Data i godzina">
                   <cellValueFactory><PropertyValueFactory property="data_godzina" /></cellValueFactory>
                 </TableColumn>
-                <TableColumn minWidth="8.0" prefWidth="49.600006103515625" text="Sala">
+                <TableColumn minWidth="8.0" prefWidth="40.0" text="Sala">
                   <cellValueFactory><PropertyValueFactory property="sala" /></cellValueFactory>
                 </TableColumn>
               </columns>
@@ -61,30 +61,41 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
             </TableView>
-            <Button fx:id="addScreeningBtn" layoutX="485.0" layoutY="60.0" mnemonicParsing="false" onAction="#editScreening" prefHeight="30.0" prefWidth="90.0" text="Dodaj seans" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0" />
-            <Button fx:id="editScreeningBtn" layoutX="485.0" layoutY="101.0" mnemonicParsing="false" onAction="#editScreening" prefHeight="30.0" prefWidth="90.0" text="Edytuj seans" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0" />
-            <Button fx:id="deleteScreeningBtn" layoutX="485.0" layoutY="140.0" mnemonicParsing="false" onAction="#deleteScreening" prefHeight="30.0" prefWidth="90.0" text="Usuń seans" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0" />
-            <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie seansami" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="addScreeningBtn" layoutX="479.6" layoutY="60.0" mnemonicParsing="false" onAction="#editScreening" prefHeight="30.0" prefWidth="90.0" text="Dodaj seans" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
+            <Button fx:id="editScreeningBtn" layoutX="479.6" layoutY="110.0" mnemonicParsing="false" onAction="#editScreening" prefHeight="30.0" prefWidth="90.0" text="Edytuj seans" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="110.0" />
+            <Button fx:id="deleteScreeningBtn" layoutX="479.6" layoutY="160.0" mnemonicParsing="false" onAction="#deleteScreening" prefHeight="30.0" prefWidth="90.0" text="Usuń seans" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="160.0" />
+            <Label layoutX="247.0" layoutY="22.0" styleClass="header" text="Zarządzanie seansami" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
           </children></AnchorPane>
       </content>
     </Tab>
 
-    <Tab closable="false" text="Rezerwacje">
+    <Tab closable="false" onSelectionChanged="#fetchBookings" text="Rezerwacje">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <TableView layoutX="58.0" layoutY="60.0" prefHeight="252.0">
+            <TableView fx:id="bookingTable" focusTraversable="false" layoutX="58.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
               <columns>
-                <TableColumn prefWidth="31.39999008178711" text="ID" />
-                <TableColumn prefWidth="158.99996948242188" text="Tytuł" />
-                <TableColumn prefWidth="70.60005187988281" text="Gatunek" />
-                <TableColumn prefWidth="82.79998779296875" text="Czas trwania" />
+                <TableColumn prefWidth="30.0" text="ID">
+                    <cellValueFactory><PropertyValueFactory property="id_rezerwacji" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="190.0" text="Seans">
+                    <cellValueFactory><PropertyValueFactory property="seans" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="150.0" text="Klient">
+                    <cellValueFactory><PropertyValueFactory property="klient" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="50.0" text="Fotel">
+                    <cellValueFactory><PropertyValueFactory property="fotel" /></cellValueFactory>
+                </TableColumn>
               </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
             </TableView>
-            <Button layoutX="436.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Dodaj rezerwację" />
-            <Button layoutX="436.0" layoutY="101.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Edytuj rezerwację" />
-            <Button layoutX="436.0" layoutY="140.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Usuń rezerwację" />
-            <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie rezerwacjami" />
+            <Button fx:id="addBookingBtn" layoutX="469.6" layoutY="60.0" mnemonicParsing="false" onAction="#editBooking" prefHeight="30.0" prefWidth="110.0" text="Dodaj rezerwację" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="60.0" />
+            <Button fx:id="editBookingBtn" layoutX="469.6" layoutY="110.0" mnemonicParsing="false" onAction="#editBooking" prefHeight="30.0" prefWidth="110.0" text="Edytuj rezerwację" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="110.0" />
+            <Button fx:id="deleteBookingBtn" layoutX="469.6" layoutY="160.0" mnemonicParsing="false" onAction="#deleteBooking" prefHeight="30.0" prefWidth="110.0" text="Usuń rezerwację" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="160.0" />
+            <Label layoutX="247.0" layoutY="22.0" styleClass="header" text="Zarządzanie rezerwacjami" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
           </children></AnchorPane>
       </content>
     </Tab>
@@ -93,7 +104,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <TableView fx:id="roomTable" focusTraversable="false" layoutX="58.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="50.0">
+            <TableView fx:id="roomTable" focusTraversable="false" layoutX="58.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
               <columns>
                 <TableColumn prefWidth="115.0" text="Numer sali">
                   <cellValueFactory><PropertyValueFactory property="numer_sali" /></cellValueFactory>
@@ -106,10 +117,10 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
             </TableView>
-            <Button fx:id="addRoomBtn" layoutX="449.0" layoutY="60.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="30.0" prefWidth="90.0" text="Dodaj salę" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0" />
-            <Button fx:id="editRoomBtn" layoutX="449.0" layoutY="101.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="30.0" prefWidth="90.0" text="Edytuj salę" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0" />
-            <Button fx:id="deleteRoomBtn" layoutX="449.0" layoutY="140.0" mnemonicParsing="false" onAction="#deleteRoom" prefHeight="30.0" prefWidth="90.0" text="Usuń salę" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0" />
-            <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie salami" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="addRoomBtn" layoutX="479.6" layoutY="60.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="30.0" prefWidth="90.0" text="Dodaj salę" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
+            <Button fx:id="editRoomBtn" layoutX="479.6" layoutY="110.0" mnemonicParsing="false" onAction="#editRoom" prefHeight="30.0" prefWidth="90.0" text="Edytuj salę" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="110.0" />
+            <Button fx:id="deleteRoomBtn" layoutX="479.6" layoutY="160.0" mnemonicParsing="false" onAction="#deleteRoom" prefHeight="30.0" prefWidth="90.0" text="Usuń salę" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="160.0" />
+            <Label layoutX="247.0" layoutY="22.0" styleClass="header" text="Zarządzanie salami" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
           </children></AnchorPane>
       </content>
     </Tab>
@@ -118,21 +129,21 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
           <children>
-            <TableView fx:id="clientTable" focusTraversable="false" layoutX="33.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="50.0">
+            <TableView fx:id="clientTable" focusTraversable="false" layoutX="33.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
               <columns>
-                <TableColumn prefWidth="38.20001411437988" text="ID">
+                <TableColumn prefWidth="30.0" text="ID">
                   <cellValueFactory><PropertyValueFactory property="id_klienta" /></cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="130.5999984741211" text="Imię">
+                <TableColumn prefWidth="70.0" text="Imię">
                   <cellValueFactory><PropertyValueFactory property="imie" /></cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="62.20001220703125" text="Nazwisko">
+                <TableColumn prefWidth="90.0" text="Nazwisko">
                   <cellValueFactory><PropertyValueFactory property="nazwisko" /></cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="104.99996948242188" text="Email">
+                <TableColumn prefWidth="140.0" text="Email">
                   <cellValueFactory><PropertyValueFactory property="email" /></cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="89.39996337890625" text="Telefon">
+                <TableColumn prefWidth="90.0" text="Telefon">
                   <cellValueFactory><PropertyValueFactory property="telefon" /></cellValueFactory>
                 </TableColumn>
               </columns>
@@ -140,10 +151,10 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
             </TableView>
-            <Button fx:id="addClientBtn" layoutX="480.0" layoutY="60.0" mnemonicParsing="false" onAction="#editClient" prefHeight="30.0" prefWidth="90.0" text="Dodaj klienta" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="50.0" />
-            <Button fx:id="editClientBtn" layoutX="480.0" layoutY="101.0" mnemonicParsing="false" onAction="#editClient" prefHeight="30.0" prefWidth="90.0" text="Edytuj klienta" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0" />
-            <Button fx:id="deleteClientBtn" layoutX="480.0" layoutY="140.0" mnemonicParsing="false" onAction="#deleteClient" prefHeight="30.0" prefWidth="90.0" text="Usuń klienta" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="150.0" />
-            <Label layoutX="247.0" layoutY="22.0" text="Zarządzanie klientami" AnchorPane.topAnchor="20.0" />
+            <Button fx:id="addClientBtn" layoutX="479.6" layoutY="60.0" mnemonicParsing="false" onAction="#editClient" prefHeight="30.0" prefWidth="90.0" text="Dodaj klienta" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="60.0" />
+            <Button fx:id="editClientBtn" layoutX="479.6" layoutY="110.0" mnemonicParsing="false" onAction="#editClient" prefHeight="30.0" prefWidth="90.0" text="Edytuj klienta" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="110.0" />
+            <Button fx:id="deleteClientBtn" layoutX="479.6" layoutY="160.0" mnemonicParsing="false" onAction="#deleteClient" prefHeight="30.0" prefWidth="90.0" text="Usuń klienta" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="160.0" />
+            <Label layoutX="247.0" layoutY="22.0" styleClass="header" text="Zarządzanie klientami" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
           </children></AnchorPane>
       </content>
     </Tab>

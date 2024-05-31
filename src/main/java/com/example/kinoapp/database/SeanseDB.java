@@ -1,11 +1,9 @@
 package com.example.kinoapp.database;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity(name = "Seanse")
 public class SeanseDB {
@@ -18,6 +16,8 @@ public class SeanseDB {
     @ManyToOne
     @JoinColumn(name = "numer_sali")
     private SaleDB sala;
+    @OneToMany(mappedBy = "seans")
+    private List<RezerwacjeDB> rezerwacje;
 
     public SeanseDB() {
     }

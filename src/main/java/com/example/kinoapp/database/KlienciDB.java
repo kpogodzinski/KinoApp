@@ -2,6 +2,9 @@ package com.example.kinoapp.database;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity(name = "Klienci")
 public class KlienciDB {
@@ -11,6 +14,8 @@ public class KlienciDB {
     private String nazwisko;
     private String email;
     private String telefon;
+    @OneToMany(mappedBy = "klient")
+    private List<RezerwacjeDB> rezerwacje;
 
     public KlienciDB() {
     }
