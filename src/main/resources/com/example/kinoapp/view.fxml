@@ -161,13 +161,13 @@
 
     <Tab closable="false" text="O programie">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="574.0">
                <children>
-                  <ImageView fitHeight="51.0" fitWidth="52.0" layoutX="32.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                  <Label layoutX="20.0" layoutY="60.0" prefHeight="64.0" styleClass="title" text="KinoApp" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
+                  <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="43.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="30.0">
                      <image>
                         <Image url="@favicon.png" />
                      </image></ImageView>
-                  <Label layoutX="277.0" layoutY="45.0" text="KinoApp" />
                   <Label layoutX="58.0" layoutY="168.0" text="App icon designed by Freepik." />
                </children></AnchorPane>
       </content>

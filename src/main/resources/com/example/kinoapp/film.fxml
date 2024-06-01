@@ -3,16 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="280.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <Label layoutX="112.0" layoutY="22.0" text="Edytuj informacje o filmie" />
-   <Label layoutX="79.0" layoutY="71.0" text="ID" />
-   <TextField fx:id="id_filmu" disable="true" editable="false" focusTraversable="false" layoutX="106.0" layoutY="67.0" prefHeight="26.0" prefWidth="45.0" />
-   <Label layoutX="66.0" layoutY="112.0" text="Tytuł" />
-   <TextField fx:id="tytul" layoutX="106.0" layoutY="108.0" prefHeight="26.0" prefWidth="199.0" />
-   <Label layoutX="50.0" layoutY="152.0" text="Gatunek" />
-   <TextField fx:id="gatunek" layoutX="107.0" layoutY="148.0" prefHeight="26.0" prefWidth="122.0" />
-   <Label layoutX="30.0" layoutY="190.0" text="Czas trwania" />
-   <TextField fx:id="czas_trwania" layoutX="107.0" layoutY="186.0" prefHeight="26.0" prefWidth="66.0" promptText="min" />
-   <Button defaultButton="true" layoutX="225.0" layoutY="229.0" mnemonicParsing="false" onAction="#save" text="Zapisz" />
-   <Button cancelButton="true" layoutX="281.0" layoutY="229.0" mnemonicParsing="false" onAction="#cancel" text="Anuluj" />
+<AnchorPane prefHeight="280.0" prefWidth="360.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <Label layoutX="112.0" layoutY="22.0" styleClass="header" text="Edytuj informacje o filmie" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+   <Label alignment="CENTER_RIGHT" layoutX="79.0" layoutY="71.0" prefHeight="25.0" prefWidth="100.0" text="ID" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0" />
+   <TextField fx:id="id_filmu" disable="true" editable="false" focusTraversable="false" layoutX="106.0" layoutY="67.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="70.0" />
+   <Label alignment="CENTER_RIGHT" layoutX="66.0" layoutY="112.0" prefHeight="25.0" prefWidth="100.0" text="Tytuł" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="110.0" />
+   <TextField fx:id="tytul" layoutX="106.0" layoutY="108.0" prefHeight="25.0" prefWidth="210.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="110.0" />
+   <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="152.0" prefHeight="25.0" prefWidth="100.0" text="Gatunek" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="150.0" />
+   <TextField fx:id="gatunek" layoutX="107.0" layoutY="148.0" prefHeight="25.0" prefWidth="120.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="150.0" />
+   <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="190.0" prefHeight="25.0" prefWidth="100.0" text="Czas trwania" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="190.0" />
+   <TextField fx:id="czas_trwania" layoutX="107.0" layoutY="186.0" prefHeight="25.0" prefWidth="60.0" promptText="min" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="190.0" />
+   <Button defaultButton="true" layoutX="225.0" layoutY="229.0" mnemonicParsing="false" onAction="#save" text="Zapisz" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="80.0" />
+   <Button cancelButton="true" layoutX="281.0" layoutY="229.0" mnemonicParsing="false" onAction="#cancel" text="Anuluj" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
 </AnchorPane>

@@ -1,6 +1,15 @@
+* {
+    -fx-font-family: "Cambria";
+}
+
 Label.header {
-    -fx-alignment: center;
     -fx-font-size: 18px;
-    -fx-font-family: "Franklin Gothic";
     -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+Label.title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
 }

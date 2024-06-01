@@ -4,25 +4,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="280.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="280.0" prefWidth="360.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="79.0" layoutY="71.0" text="ID" />
-      <TextField fx:id="id_seansu" disable="true" editable="false" focusTraversable="false" layoutX="106.0" layoutY="67.0" prefHeight="26.0" prefWidth="45.0" />
-      <Label layoutX="70.0" layoutY="112.0" text="Film" />
-      <ChoiceBox fx:id="film" layoutX="107.0" layoutY="108.0" prefHeight="26.0" prefWidth="232.0" />
-      <Label layoutX="18.0" layoutY="152.0" text="Data i godzina" />
-      <DatePicker fx:id="data" editable="false" layoutX="107.0" layoutY="148.0" prefHeight="26.0" prefWidth="101.0" />
-      <Spinner fx:id="godzina" layoutX="215.0" layoutY="148.0" prefHeight="26.0" prefWidth="59.0" />
-      <Label layoutX="274.0" layoutY="145.0" text=":">
+      <Label alignment="CENTER_RIGHT" layoutX="79.0" layoutY="71.0" prefHeight="25.0" prefWidth="100.0" text="ID" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0" />
+      <TextField fx:id="id_seansu" disable="true" editable="false" focusTraversable="false" layoutX="106.0" layoutY="67.0" prefHeight="25.0" prefWidth="40.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="70.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="112.0" prefHeight="25.0" prefWidth="100.0" text="Film" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="110.0" />
+      <ChoiceBox fx:id="film" layoutX="107.0" layoutY="108.0" prefHeight="25.0" prefWidth="230.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="110.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="152.0" prefHeight="25.0" prefWidth="100.0" text="Data i godzina" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="150.0" />
+      <DatePicker fx:id="data" editable="false" layoutX="107.0" layoutY="148.0" prefHeight="25.0" prefWidth="100.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="150.0" />
+      <Spinner fx:id="godzina" layoutX="215.0" layoutY="150.0" prefHeight="25.0" prefWidth="60.0" AnchorPane.topAnchor="150.0" />
+      <Label layoutX="275.0" layoutY="150.0" prefHeight="25.0" text=":" AnchorPane.topAnchor="150.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Spinner fx:id="minuta" layoutX="279.0" layoutY="148.0" prefHeight="26.0" prefWidth="59.0" />
-      <Label layoutX="71.0" layoutY="190.0" text="Sala" />
-      <ChoiceBox fx:id="sala" layoutX="107.0" layoutY="186.0" prefHeight="26.0" prefWidth="77.0" />
-      <Button defaultButton="true" layoutX="225.0" layoutY="229.0" mnemonicParsing="false" onAction="#save" text="Zapisz" />
-      <Button cancelButton="true" layoutX="281.0" layoutY="229.0" mnemonicParsing="false" onAction="#cancel" text="Anuluj" />
-      <Label layoutX="112.0" layoutY="22.0" text="Edytuj informacje o seansie" />
+      <Spinner fx:id="minuta" layoutX="281.0" layoutY="150.0" prefHeight="25.0" prefWidth="60.0" AnchorPane.topAnchor="150.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="71.0" layoutY="190.0" prefHeight="25.0" prefWidth="100.0" text="Sala" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="190.0" />
+      <ChoiceBox fx:id="sala" layoutX="107.0" layoutY="186.0" prefHeight="25.0" prefWidth="77.0" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="190.0" />
+      <Button defaultButton="true" layoutX="225.0" layoutY="229.0" mnemonicParsing="false" onAction="#save" text="Zapisz" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="80.0" />
+      <Button cancelButton="true" layoutX="281.0" layoutY="229.0" mnemonicParsing="false" onAction="#cancel" text="Anuluj" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Label layoutX="112.0" layoutY="22.0" styleClass="header" text="Edytuj informacje o seansie" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
    </children>
 </AnchorPane>
