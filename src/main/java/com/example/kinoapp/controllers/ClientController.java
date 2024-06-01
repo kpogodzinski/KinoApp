@@ -79,8 +79,10 @@ public class ClientController implements SmallController {
             Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
             error.showAndWait();
         } catch (RollbackException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Adres email jest już zarejestrowany w bazie.", ButtonType.OK);
-            error.showAndWait();
+            if (e.getCause().getMessage().contains("unikalnyemail")) {
+                Alert error = new Alert(Alert.AlertType.NONE, "Adres email jest już zarejestrowany w bazie.", ButtonType.OK);
+                error.showAndWait();
+            }
         }
     }
 

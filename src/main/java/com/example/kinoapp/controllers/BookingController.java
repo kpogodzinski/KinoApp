@@ -4,6 +4,7 @@ import com.example.kinoapp.database.DBManager;
 import com.example.kinoapp.database.RezerwacjeDB;
 import com.example.kinoapp.database.SeanseDB;
 import com.example.kinoapp.tableview.Rezerwacje;
+import jakarta.persistence.RollbackException;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -106,16 +109,35 @@ public class BookingController implements SmallController {
     public void save(Event event) {
         RezerwacjeDB r = new RezerwacjeDB();
         r.setId_rezerwacji(Long.parseLong(id_rezerwacji.getText()));
-        DBManager.getScreenings().forEach(screening -> {
-            if (screening.getFilm().getTytul().equals(seans.getValue().substring(0, seans.getValue().indexOf("\n")))
-            && screening.getData_godzina().equals(Timestamp.valueOf(seans.getValue().substring(seans.getValue().indexOf("\n")+1))))
-                r.setSeans(screening);
-        });
-        DBManager.getClients().forEach(client -> {
-            if (client.getEmail().equals(klient.getValue()))
-                r.setKlient(client);
-        });
-        r.setNumer_fotela(fotel.getValue());
+        try {
+            if (seans.getValue().isEmpty() || klient.getValue().isEmpty())
+                throw new NullPointerException();
+            DBManager.getScreenings().forEach(screening -> {
+                if (screening.getFilm().getTytul().equals(seans.getValue().substring(0, seans.getValue().indexOf("\n")))
+                        && screening.getData_godzina().equals(Timestamp.valueOf(seans.getValue().substring(seans.getValue().indexOf("\n") + 1) + ":00")))
+                    r.setSeans(screening);
+            });
+            DBManager.getClients().forEach(client -> {
+                if (client.getEmail().equals(klient.getValue()))
+                    r.setKlient(client);
+            });
+            r.setNumer_fotela(fotel.getValue());
+            DBManager.update(r);
+            cancel(event);
+        } catch (NullPointerException e) {
+            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
+            error.showAndWait();
+        } catch (RollbackException e) {
+            if (e.getCause().getMessage().contains("rezerwacje_id_seansu_numer_fotela_key")) {
+                Alert error = new Alert(Alert.AlertType.NONE, "To miejsce jest już zajęte. " +
+                        "Wybierz inne miejsce.", ButtonType.OK);
+                error.showAndWait();
+            }
+            else if (e.getCause().getMessage().contains("sprawdzpojemnosc")) {
+                Alert error = new Alert(Alert.AlertType.NONE, "Brak wolnych miejsc na wybrany seans.", ButtonType.OK);
+                error.showAndWait();
+            }
+        }
     }
 
     @Override
