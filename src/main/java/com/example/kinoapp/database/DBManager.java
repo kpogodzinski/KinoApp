@@ -1,9 +1,10 @@
 package com.example.kinoapp.database;
 
-import com.example.kinoapp.tableview.Seanse;
-import jakarta.persistence.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
@@ -42,25 +43,15 @@ public class DBManager {
     }
 
     public static long getNextId(String table) {
-        List id = new ArrayList();
-        switch (table) {
-            case "Filmy":
-                id = EntityManager.createQuery("SELECT MAX(f.id_filmu) FROM Filmy f").getResultList();
-                break;
-            case "Seanse":
-                id = EntityManager.createQuery("SELECT MAX(s.id_seansu) FROM Seanse s").getResultList();
-                break;
-            case "Klienci":
-                id = EntityManager.createQuery("SELECT MAX(k.id_klienta) FROM Klienci k").getResultList();
-                break;
-            case "Sale":
-                id = EntityManager.createQuery("SELECT MAX(s.numer_sali) FROM Sale s").getResultList();
-                break;
-            case "Rezerwacje":
-                id = EntityManager.createQuery("SELECT MAX(r.id_rezerwacji) FROM Rezerwacje r").getResultList();
-                break;
-        }
-        if (id.isEmpty())
+        List id = switch (table) {
+            case "Filmy" -> EntityManager.createQuery("SELECT MAX(f.id_filmu) FROM Filmy f").getResultList();
+            case "Seanse" -> EntityManager.createQuery("SELECT MAX(s.id_seansu) FROM Seanse s").getResultList();
+            case "Klienci" -> EntityManager.createQuery("SELECT MAX(k.id_klienta) FROM Klienci k").getResultList();
+            case "Sale" -> EntityManager.createQuery("SELECT MAX(s.numer_sali) FROM Sale s").getResultList();
+            case "Rezerwacje" -> EntityManager.createQuery("SELECT MAX(r.id_rezerwacji) FROM Rezerwacje r").getResultList();
+            default -> null;
+        };
+        if (id == null || id.isEmpty())
             return -1;
         return (long) id.get(0) + 1;
 //        return -1;

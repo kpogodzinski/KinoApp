@@ -2,10 +2,8 @@ package com.example.kinoapp.controllers;
 
 import com.example.kinoapp.database.DBManager;
 import com.example.kinoapp.database.RezerwacjeDB;
-import com.example.kinoapp.database.SeanseDB;
 import com.example.kinoapp.tableview.Rezerwacje;
 import jakarta.persistence.RollbackException;
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -13,11 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class BookingController implements SmallController {
     @FXML
@@ -82,9 +77,7 @@ public class BookingController implements SmallController {
 
         // Dodanie posortowanych klientów do listy combo
         ObservableList<String> clients = FXCollections.observableArrayList();
-        DBManager.getClients().forEach(client -> {
-            clients.add(client.getEmail());
-        });
+        DBManager.getClients().forEach(client -> clients.add(client.getEmail()));
         clients.sort(String::compareToIgnoreCase);
         klient.setItems(clients);
 

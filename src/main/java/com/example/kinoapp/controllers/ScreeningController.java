@@ -1,7 +1,6 @@
 package com.example.kinoapp.controllers;
 
 import com.example.kinoapp.database.DBManager;
-import com.example.kinoapp.database.FilmyDB;
 import com.example.kinoapp.database.SeanseDB;
 import com.example.kinoapp.tableview.Seanse;
 import javafx.collections.FXCollections;
@@ -13,8 +12,6 @@ import javafx.scene.control.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ScreeningController implements SmallController {
     @FXML

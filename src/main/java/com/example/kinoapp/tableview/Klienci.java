@@ -1,8 +1,6 @@
 package com.example.kinoapp.tableview;
 
-import com.example.kinoapp.database.FilmyDB;
 import com.example.kinoapp.database.KlienciDB;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 
