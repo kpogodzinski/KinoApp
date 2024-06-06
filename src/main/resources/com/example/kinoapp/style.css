@@ -13,3 +13,9 @@ Label.title {
     -fx-font-weight: bold;
     -fx-alignment: center;
 }
+
+Label.desc {
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+    -fx-text-alignment: justify;
+}

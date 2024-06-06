@@ -168,7 +168,10 @@
                      <image>
                         <Image url="@../images/favicon.png" />
                      </image></ImageView>
-                  <Label layoutX="58.0" layoutY="168.0" text="App icon designed by Freepik." />
+                  <Label layoutX="40.0" layoutY="114.0" prefWidth="520.0" styleClass="desc" text="KinoApp to aplikacja stworzona z myślą o wygodnym zarządzaniu rezerwacjami biletów w kinach. Umożliwia zarządzanie filmami, salami kinowymi, seansami oraz rezerwacjami biletów, jak również danymi klientów. Dzięki temu, zapewnia użytkownikom intuicyjne i efektywne narzędzie do organizacji wydarzeń filmowych." wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="120.0" />
+                  <Label layoutX="40.0" layoutY="200.0" prefWidth="516.0" styleClass="desc" text="Wszelkie informacje, takie jak tytuły filmów, nazwiska postaci oraz inne dane wykorzystywane w aplikacji KinoApp, są jedynie przykładowe i służą celom demonstracyjnym. Wszelkie podobieństwo do rzeczywistych tytułów filmów, osób żyjących lub zmarłych jest całkowicie przypadkowe." wrapText="true" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="200.0" />
+                  <Label layoutX="40.0" layoutY="274.0" styleClass="desc" text="Twórca aplikacji: Kacper Pogodziński" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="300.0" />
+                  <Label layoutX="38.0" layoutY="302.0" styleClass="desc" text="App icon design: Freepik" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="320.0" />
                </children></AnchorPane>
       </content>
     </Tab>
