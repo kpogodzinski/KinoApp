@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kinoapp.controllers.AppController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kinoapp.controllers.AppController">
   <tabs>
     <Tab closable="false" onSelectionChanged="#fetchFilms" text="Filmy">
       <content>
@@ -166,7 +166,7 @@
                   <Label layoutX="20.0" layoutY="60.0" prefHeight="64.0" styleClass="title" text="KinoApp" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
                   <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="43.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="30.0">
                      <image>
-                        <Image url="@favicon.png" />
+                        <Image url="@../images/favicon.png" />
                      </image></ImageView>
                   <Label layoutX="58.0" layoutY="168.0" text="App icon designed by Freepik." />
                </children></AnchorPane>

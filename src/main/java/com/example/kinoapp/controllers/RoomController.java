@@ -1,12 +1,11 @@
 package com.example.kinoapp.controllers;
 
+import com.example.kinoapp.MyAlert;
 import com.example.kinoapp.database.DBManager;
 import com.example.kinoapp.database.SaleDB;
 import com.example.kinoapp.tableview.Sale;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 public class RoomController implements SmallController {
@@ -40,15 +39,13 @@ public class RoomController implements SmallController {
         else {
             long id = DBManager.getNextId("Sale");
             numer_sali.setText(Long.toString(id));
-
-            if (numer_sali.getText().equals("-1")) {
-
-            }
         }
     }
 
     @FXML
     public void save(Event event) {
+        if (checkIdError(numer_sali))
+            return;
         try {
             SaleDB s = new SaleDB();
             s.setNumer_sali(Long.parseLong(numer_sali.getText()));
@@ -60,11 +57,9 @@ public class RoomController implements SmallController {
             DBManager.update(s);
             cancel(event);
         } catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pole Pojemność zawiera niedozwolone znaki.", ButtonType.OK);
-            error.showAndWait();
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pole Pojemność zawiera niedozwolone znaki.");
         } catch (IllegalArgumentException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
-            error.showAndWait();
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
         }
     }
 

@@ -10,8 +10,8 @@ module com.example.kinoapp {
     exports com.example.kinoapp;
     exports com.example.kinoapp.database;
     exports com.example.kinoapp.tableview;
+    exports com.example.kinoapp.controllers;
     opens com.example.kinoapp.database to javafx.base, org.hibernate.orm.core;
     opens com.example.kinoapp.tableview to javafx.base;
-    exports com.example.kinoapp.controllers;
     opens com.example.kinoapp.controllers to javafx.fxml;
 }

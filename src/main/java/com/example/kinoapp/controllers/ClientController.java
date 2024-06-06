@@ -1,13 +1,12 @@
 package com.example.kinoapp.controllers;
 
+import com.example.kinoapp.MyAlert;
 import com.example.kinoapp.database.DBManager;
 import com.example.kinoapp.database.KlienciDB;
 import com.example.kinoapp.tableview.Klienci;
 import jakarta.persistence.RollbackException;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 public class ClientController implements SmallController {
@@ -48,15 +47,13 @@ public class ClientController implements SmallController {
         else {
             long id = DBManager.getNextId("Klienci");
             id_klienta.setText(Long.toString(id));
-
-            if (id_klienta.getText().equals("-1")) {
-
-            }
         }
     }
 
     @FXML
     public void save(Event event) {
+        if (checkIdError(id_klienta))
+            return;
         try {
             KlienciDB k = new KlienciDB();
             k.setId_klienta(Long.parseLong(id_klienta.getText()));
@@ -71,16 +68,12 @@ public class ClientController implements SmallController {
             DBManager.update(k);
             cancel(event);
         } catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pole Telefon zawiera niedozwolone znaki.", ButtonType.OK);
-            error.showAndWait();
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pole Telefon zawiera niedozwolone znaki.");
         } catch (IllegalArgumentException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
-            error.showAndWait();
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
         } catch (RollbackException e) {
-            if (e.getCause().getMessage().contains("unikalnyemail")) {
-                Alert error = new Alert(Alert.AlertType.NONE, "Adres email jest już zarejestrowany w bazie.", ButtonType.OK);
-                error.showAndWait();
-            }
+            if (e.getCause().getMessage().contains("unikalnyemail"))
+                new MyAlert(MyAlert.MyAlertType.INFO, "Adres email jest już zarejestrowany w bazie.");
         }
     }
 

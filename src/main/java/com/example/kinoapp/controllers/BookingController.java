@@ -1,5 +1,6 @@
 package com.example.kinoapp.controllers;
 
+import com.example.kinoapp.MyAlert;
 import com.example.kinoapp.database.DBManager;
 import com.example.kinoapp.database.RezerwacjeDB;
 import com.example.kinoapp.tableview.Rezerwacje;
@@ -90,19 +91,16 @@ public class BookingController implements SmallController {
         else {
             long id = DBManager.getNextId("Rezerwacje");
             id_rezerwacji.setText(Long.toString(id));
-
-            if (id_rezerwacji.getText().equals("-1")) {
-
-            }
         }
     }
 
-
     @Override
     public void save(Event event) {
-        RezerwacjeDB r = new RezerwacjeDB();
-        r.setId_rezerwacji(Long.parseLong(id_rezerwacji.getText()));
+        if (checkIdError(id_rezerwacji))
+            return;
         try {
+            RezerwacjeDB r = new RezerwacjeDB();
+            r.setId_rezerwacji(Long.parseLong(id_rezerwacji.getText()));
             if (seans.getValue().isEmpty() || klient.getValue().isEmpty())
                 throw new NullPointerException();
             DBManager.getScreenings().forEach(screening -> {
@@ -118,18 +116,12 @@ public class BookingController implements SmallController {
             DBManager.update(r);
             cancel(event);
         } catch (NullPointerException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
-            error.showAndWait();
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
         } catch (RollbackException e) {
-            if (e.getCause().getMessage().contains("rezerwacje_id_seansu_numer_fotela_key")) {
-                Alert error = new Alert(Alert.AlertType.NONE, "To miejsce jest już zajęte. " +
-                        "Wybierz inne miejsce.", ButtonType.OK);
-                error.showAndWait();
-            }
-            else if (e.getCause().getMessage().contains("sprawdzpojemnosc")) {
-                Alert error = new Alert(Alert.AlertType.NONE, "Brak wolnych miejsc na wybrany seans.", ButtonType.OK);
-                error.showAndWait();
-            }
+            if (e.getCause().getMessage().contains("rezerwacje_id_seansu_numer_fotela_key"))
+                new MyAlert(MyAlert.MyAlertType.INFO, "To miejsce jest już zajęte. Wybierz inne miejsce.");
+            else if (e.getCause().getMessage().contains("sprawdzpojemnosc"))
+                new MyAlert(MyAlert.MyAlertType.INFO, "Brak wolnych miejsc na wybrany seans.");
         }
     }
 

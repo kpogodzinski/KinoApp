@@ -1,5 +1,6 @@
 package com.example.kinoapp.controllers;
 
+import com.example.kinoapp.MyAlert;
 import com.example.kinoapp.database.DBManager;
 import com.example.kinoapp.database.SeanseDB;
 import com.example.kinoapp.tableview.Seanse;
@@ -75,19 +76,17 @@ public class ScreeningController implements SmallController {
         else {
             long id = DBManager.getNextId("Seanse");
             id_seansu.setText(Long.toString(id));
-
-            if (id_seansu.getText().equals("-1")) {
-
-            }
         }
     }
 
     public void save(Event event)  {
-        SeanseDB s = new SeanseDB();
-        s.setId_seansu(Long.parseLong(id_seansu.getText()));
-        s.setData_godzina(Timestamp.valueOf(data.getValue().toString() + " " + godzina.getValue()
-                + ":" + minuta.getValue() + ":00"));
+        if (checkIdError(id_seansu))
+            return;
         try {
+            SeanseDB s = new SeanseDB();
+            s.setId_seansu(Long.parseLong(id_seansu.getText()));
+            s.setData_godzina(Timestamp.valueOf(data.getValue().toString() + " " + godzina.getValue()
+                    + ":" + minuta.getValue() + ":00"));
             if (film.getValue().isEmpty())
                 throw new NullPointerException();
             DBManager.getFilms().forEach(film -> {
@@ -101,8 +100,7 @@ public class ScreeningController implements SmallController {
             DBManager.update(s);
             cancel(event);
         } catch (NullPointerException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
-            error.showAndWait();
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
         }
     }
 

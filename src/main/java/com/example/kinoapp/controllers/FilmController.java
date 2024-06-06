@@ -1,12 +1,11 @@
 package com.example.kinoapp.controllers;
 
+import com.example.kinoapp.MyAlert;
 import com.example.kinoapp.database.DBManager;
 import com.example.kinoapp.database.FilmyDB;
 import com.example.kinoapp.tableview.Filmy;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 public class FilmController implements SmallController {
@@ -44,15 +43,13 @@ public class FilmController implements SmallController {
         else {
             long id = DBManager.getNextId("Filmy");
             id_filmu.setText(Long.toString(id));
-
-            if (id_filmu.getText().equals("-1")) {
-
-            }
         }
     }
 
     @FXML
     public void save(Event event) {
+        if (checkIdError(id_filmu))
+            return;
         try {
             FilmyDB f = new FilmyDB();
             f.setId_filmu(Long.parseLong(id_filmu.getText()));
@@ -66,11 +63,9 @@ public class FilmController implements SmallController {
             DBManager.update(f);
             cancel(event);
         } catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pole Czas trwania zawiera niedozwolone znaki.", ButtonType.OK);
-            error.showAndWait();
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pole Czas trwania zawiera niedozwolone znaki.");
         } catch (IllegalArgumentException e) {
-            Alert error = new Alert(Alert.AlertType.NONE, "Pola nie mogą być puste.", ButtonType.OK);
-            error.showAndWait();
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
         }
     }
 

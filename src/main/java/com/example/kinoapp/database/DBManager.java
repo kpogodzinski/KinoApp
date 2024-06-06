@@ -54,6 +54,5 @@ public class DBManager {
         if (id == null || id.isEmpty())
             return -1;
         return (long) id.get(0) + 1;
-//        return -1;
     }
 }
