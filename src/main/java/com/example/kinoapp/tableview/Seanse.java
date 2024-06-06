@@ -14,6 +14,7 @@ public class Seanse {
 
     public Seanse() {
     }
+
     public Seanse(SeanseDB s) {
         setId_seansu(s.getId_seansu());
         setFilm(s.getFilm().getTytul());
@@ -69,5 +70,4 @@ public class Seanse {
     public void setSala(long sala) {
         this.sala.set(sala);
     }
-
 }

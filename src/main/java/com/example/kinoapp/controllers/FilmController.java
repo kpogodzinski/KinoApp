@@ -6,6 +6,7 @@ import com.example.kinoapp.database.FilmyDB;
 import com.example.kinoapp.tableview.Filmy;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class FilmController implements SmallController {
@@ -19,13 +20,13 @@ public class FilmController implements SmallController {
     private TextField czas_trwania;
     private final boolean editMode;
     private Filmy film;
+    @FXML
+    private Button saveBtn;
+    @FXML
+    private Button cancelBtn;
 
     public FilmController(boolean editMode) {
         this.editMode = editMode;
-    }
-
-    public Filmy getFilm() {
-        return film;
     }
 
     public void setFilm(Filmy film) {
@@ -34,6 +35,8 @@ public class FilmController implements SmallController {
 
     @FXML
     public void initialize() {
+        saveBtn.setOnAction(this::save);
+        cancelBtn.setOnAction(this::cancel);
         if (editMode) {
             id_filmu.setText(Long.toString(film.getId_filmu()));
             tytul.setText(film.getTytul());
@@ -67,10 +70,5 @@ public class FilmController implements SmallController {
         } catch (IllegalArgumentException e) {
             new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
         }
-    }
-
-    @Override
-    public void cancel(Event event) {
-        SmallController.super.cancel(event);
     }
 }

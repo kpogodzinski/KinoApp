@@ -43,7 +43,7 @@ public class DBManager {
     }
 
     public static long getNextId(String table) {
-        List id = switch (table) {
+        List<?> id = switch (table) {
             case "Filmy" -> EntityManager.createQuery("SELECT MAX(f.id_filmu) FROM Filmy f").getResultList();
             case "Seanse" -> EntityManager.createQuery("SELECT MAX(s.id_seansu) FROM Seanse s").getResultList();
             case "Klienci" -> EntityManager.createQuery("SELECT MAX(k.id_klienta) FROM Klienci k").getResultList();

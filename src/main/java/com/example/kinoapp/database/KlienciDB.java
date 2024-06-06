@@ -59,4 +59,12 @@ public class KlienciDB {
     public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
+
+    public List<RezerwacjeDB> getRezerwacje() {
+        return rezerwacje;
+    }
+
+    public void setRezerwacje(List<RezerwacjeDB> rezerwacje) {
+        this.rezerwacje = rezerwacje;
+    }
 }

@@ -38,7 +38,6 @@ public class SeanseDB {
         this.data_godzina = data_godzina;
     }
 
-
     public FilmyDB getFilm() {
         return film;
     }
@@ -53,5 +52,13 @@ public class SeanseDB {
 
     public void setSala(SaleDB sala) {
         this.sala = sala;
+    }
+
+    public List<RezerwacjeDB> getRezerwacje() {
+        return rezerwacje;
+    }
+
+    public void setRezerwacje(List<RezerwacjeDB> rezerwacje) {
+        this.rezerwacje = rezerwacje;
     }
 }

@@ -7,6 +7,7 @@ import com.example.kinoapp.tableview.Klienci;
 import jakarta.persistence.RollbackException;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class ClientController implements SmallController {
@@ -22,13 +23,13 @@ public class ClientController implements SmallController {
     private TextField telefon;
     private final boolean editMode;
     private Klienci client;
+    @FXML
+    private Button saveBtn;
+    @FXML
+    private Button cancelBtn;
 
     public ClientController(boolean editMode) {
         this.editMode = editMode;
-    }
-
-    public Klienci getClient() {
-        return client;
     }
 
     public void setClient(Klienci client) {
@@ -37,6 +38,8 @@ public class ClientController implements SmallController {
 
     @FXML
     public void initialize() {
+        saveBtn.setOnAction(this::save);
+        cancelBtn.setOnAction(this::cancel);
         if (editMode) {
             id_klienta.setText(Long.toString(client.getId_klienta()));
             imie.setText(client.getImie());
@@ -75,10 +78,5 @@ public class ClientController implements SmallController {
             if (e.getCause().getMessage().contains("unikalnyemail"))
                 new MyAlert(MyAlert.MyAlertType.INFO, "Adres email jest już zarejestrowany w bazie.");
         }
-    }
-
-    @Override
-    public void cancel(Event event) {
-        SmallController.super.cancel(event);
     }
 }

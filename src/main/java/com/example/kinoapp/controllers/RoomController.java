@@ -6,6 +6,7 @@ import com.example.kinoapp.database.SaleDB;
 import com.example.kinoapp.tableview.Sale;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class RoomController implements SmallController {
@@ -17,13 +18,12 @@ public class RoomController implements SmallController {
     private final boolean editMode;
 
     private Sale room;
-
+    @FXML
+    private Button saveBtn;
+    @FXML
+    private Button cancelBtn;
     public RoomController(boolean editMode) {
         this.editMode = editMode;
-    }
-
-    public Sale getRoom() {
-        return room;
     }
 
     public void setRoom(Sale room) {
@@ -32,6 +32,8 @@ public class RoomController implements SmallController {
 
     @FXML
     public void initialize() {
+        saveBtn.setOnAction(this::save);
+        cancelBtn.setOnAction(this::cancel);
         if (editMode) {
             numer_sali.setText(Long.toString(room.getNumer_sali()));
             pojemnosc.setText(Integer.toString(room.getPojemnosc()));
@@ -61,10 +63,5 @@ public class RoomController implements SmallController {
         } catch (IllegalArgumentException e) {
             new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
         }
-    }
-
-    @Override
-    public void cancel(Event event) {
-        SmallController.super.cancel(event);
     }
 }

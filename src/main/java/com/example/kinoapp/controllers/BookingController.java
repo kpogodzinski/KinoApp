@@ -26,13 +26,13 @@ public class BookingController implements SmallController {
     private Spinner<Integer> fotel;
     private final boolean editMode;
     private Rezerwacje booking;
+    @FXML
+    private Button saveBtn;
+    @FXML
+    private Button cancelBtn;
 
     public BookingController(boolean editMode) {
         this.editMode = editMode;
-    }
-
-    public Rezerwacje getBooking() {
-        return booking;
     }
 
     public void setBooking(Rezerwacje booking) {
@@ -82,6 +82,8 @@ public class BookingController implements SmallController {
         clients.sort(String::compareToIgnoreCase);
         klient.setItems(clients);
 
+        saveBtn.setOnAction(this::save);
+        cancelBtn.setOnAction(this::cancel);
         if (editMode) {
             id_rezerwacji.setText(Long.toString(booking.getId_rezerwacji()));
             seans.setValue(booking.getSeans());
@@ -123,10 +125,5 @@ public class BookingController implements SmallController {
             else if (e.getCause().getMessage().contains("sprawdzpojemnosc"))
                 new MyAlert(MyAlert.MyAlertType.INFO, "Brak wolnych miejsc na wybrany seans.");
         }
-    }
-
-    @Override
-    public void cancel(Event event) {
-        SmallController.super.cancel(event);
     }
 }

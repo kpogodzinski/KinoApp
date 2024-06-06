@@ -29,13 +29,13 @@ public class ScreeningController implements SmallController {
     private ChoiceBox<Long> sala;
     private final boolean editMode;
     private Seanse screening;
+    @FXML
+    private Button saveBtn;
+    @FXML
+    private Button cancelBtn;
 
     public ScreeningController(boolean editMode) {
         this.editMode = editMode;
-    }
-
-    public Seanse getScreening() {
-        return screening;
     }
 
     public void setScreening(Seanse screening) {
@@ -65,6 +65,8 @@ public class ScreeningController implements SmallController {
         sala.setItems(roomNumbers);
 
         if (editMode) {
+            saveBtn.setOnAction(this::save);
+            cancelBtn.setOnAction(this::cancel);
             id_seansu.setText(Long.toString(screening.getId_seansu()));
             film.setValue(screening.getFilm());
             LocalDateTime dateTime = Timestamp.valueOf(screening.getData_godzina() + ":00").toLocalDateTime();
@@ -102,10 +104,5 @@ public class ScreeningController implements SmallController {
         } catch (NullPointerException e) {
             new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
         }
-    }
-
-    @Override
-    public void cancel(Event event) {
-        SmallController.super.cancel(event);
     }
 }
