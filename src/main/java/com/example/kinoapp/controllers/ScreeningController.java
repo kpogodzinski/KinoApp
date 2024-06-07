@@ -64,6 +64,8 @@ public class ScreeningController implements SmallController {
         roomNumbers.sort(Long::compare);
         sala.setItems(roomNumbers);
 
+        saveBtn.setOnAction(this::save);
+        cancelBtn.setOnAction(this::cancel);
         if (editMode) {
             saveBtn.setOnAction(this::save);
             cancelBtn.setOnAction(this::cancel);
