@@ -77,6 +77,8 @@ public class ClientController implements SmallController {
         } catch (RollbackException e) {
             if (e.getCause().getMessage().contains("unikalnyemail"))
                 new MyAlert(MyAlert.MyAlertType.INFO, "Adres email jest już zarejestrowany w bazie.");
+            else if (e.getCause().getMessage().contains("wartość zbyt długa"))
+                new MyAlert(MyAlert.MyAlertType.WARNING, "Jedna z wartości przekracza dozwoloną długość.");
         }
     }
 }

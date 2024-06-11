@@ -54,12 +54,13 @@ public class RoomController implements SmallController {
             if (pojemnosc.getText().isEmpty())
                 throw new IllegalArgumentException();
             s.setPojemnosc(Integer.parseInt(pojemnosc.getText()));
-            if (s.getPojemnosc() <= 0)
+            if (s.getPojemnosc() <= 0 || s.getPojemnosc() > 999)
                 throw new NumberFormatException();
             DBManager.update(s);
             cancel(event);
         } catch (NumberFormatException e) {
-            new MyAlert(MyAlert.MyAlertType.WARNING, "Pole Pojemność zawiera niedozwolone znaki.");
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pole Pojemność zawiera niedozwolone znaki " +
+                    "lub wartość pola jest zbyt długa.");
         } catch (IllegalArgumentException e) {
             new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
         }

@@ -4,6 +4,7 @@ import com.example.kinoapp.MyAlert;
 import com.example.kinoapp.database.DBManager;
 import com.example.kinoapp.database.FilmyDB;
 import com.example.kinoapp.tableview.Filmy;
+import jakarta.persistence.RollbackException;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -61,14 +62,18 @@ public class FilmController implements SmallController {
             f.setTytul(tytul.getText());
             f.setGatunek(gatunek.getText());
             f.setCzas_trwania(Integer.parseInt(czas_trwania.getText()));
-            if (f.getCzas_trwania() <= 0)
+            if (f.getCzas_trwania() <= 0 || f.getCzas_trwania() > 999)
                 throw new NumberFormatException();
             DBManager.update(f);
             cancel(event);
         } catch (NumberFormatException e) {
-            new MyAlert(MyAlert.MyAlertType.WARNING, "Pole Czas trwania zawiera niedozwolone znaki.");
+            new MyAlert(MyAlert.MyAlertType.WARNING, "Pole Czas trwania zawiera niedozwolone znaki" +
+                    " lub wartość pola jest zbyt długa.");
         } catch (IllegalArgumentException e) {
             new MyAlert(MyAlert.MyAlertType.WARNING, "Pola nie mogą być puste.");
+        } catch (RollbackException e) {
+            if (e.getCause().getMessage().contains("wartość zbyt długa"))
+                new MyAlert(MyAlert.MyAlertType.WARNING, "Jedna z wartości przekracza dozwoloną długość.");
         }
     }
 }
