@@ -10,7 +10,7 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <TableView fx:id="filmTable" focusTraversable="false" layoutX="58.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
                 <columns>
-                    <TableColumn prefWidth="30.0" text="ID">
+                    <TableColumn prefWidth="35.0" text="ID">
                         <cellValueFactory>
                             <PropertyValueFactory property="id_filmu" />
                         </cellValueFactory>
@@ -20,7 +20,7 @@
                             <PropertyValueFactory property="tytul" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn text="Gatunek">
+                    <TableColumn prefWidth="75.0" text="Gatunek">
                         <cellValueFactory>
                             <PropertyValueFactory property="gatunek" />
                         </cellValueFactory>
@@ -46,7 +46,7 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <TableView fx:id="screeningTable" focusTraversable="false" layoutX="44.0" layoutY="60.0" prefHeight="252.0" prefWidth="405.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
                 <columns>
-                    <TableColumn prefWidth="30.0" text="ID">
+                    <TableColumn prefWidth="35.0" text="ID">
                         <cellValueFactory>
                             <PropertyValueFactory property="id_seansu" />
                         </cellValueFactory>
@@ -61,7 +61,7 @@
                             <PropertyValueFactory property="data_godzina" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn minWidth="8.0" prefWidth="40.0" text="Sala">
+                    <TableColumn minWidth="8.0" prefWidth="35.0" text="Sala">
                         <cellValueFactory>
                             <PropertyValueFactory property="sala" />
                         </cellValueFactory>
@@ -82,7 +82,7 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <TableView fx:id="bookingTable" focusTraversable="false" layoutX="58.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
                 <columns>
-                    <TableColumn prefWidth="30.0" text="ID">
+                    <TableColumn prefWidth="35.0" text="ID">
                         <cellValueFactory>
                             <PropertyValueFactory property="id_rezerwacji" />
                         </cellValueFactory>
@@ -92,7 +92,7 @@
                             <PropertyValueFactory property="seans" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn prefWidth="150.0" text="Klient">
+                    <TableColumn prefWidth="145.0" text="Klient">
                         <cellValueFactory>
                             <PropertyValueFactory property="klient" />
                         </cellValueFactory>
@@ -144,7 +144,7 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <TableView fx:id="clientTable" focusTraversable="false" layoutX="33.0" layoutY="60.0" prefHeight="252.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="60.0">
                 <columns>
-                    <TableColumn prefWidth="30.0" text="ID">
+                    <TableColumn prefWidth="35.0" text="ID">
                         <cellValueFactory>
                             <PropertyValueFactory property="id_klienta" />
                         </cellValueFactory>
@@ -154,7 +154,7 @@
                             <PropertyValueFactory property="imie" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn prefWidth="90.0" text="Nazwisko">
+                    <TableColumn prefWidth="85.0" text="Nazwisko">
                         <cellValueFactory>
                             <PropertyValueFactory property="nazwisko" />
                         </cellValueFactory>
